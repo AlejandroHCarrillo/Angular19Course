@@ -1,4 +1,6 @@
 # Curso Angular 19 Bases
+
+## Sesion 04
 En esta sección aprenderemos sobre:
 
 * Señales
@@ -13,7 +15,6 @@ En esta sección aprenderemos sobre:
 El objetivo es tener una introducción a conceptos básicos y algunos no tan básicos de Angular, para comenzar a familiarizarnos y aprender esta tecnología.
 
 Recuerden que cada persona tiene diferentes formas de aprender. Para algunos puede ser más fácil que para otros, pero lo importante es avanzar paso a paso y seguir adelante.
-
 
 ### Gist tarea de señales
 https://gist.github.com/Klerith/b07bfb16b4d6aa27b8ccdbb991d316b2
@@ -77,12 +78,29 @@ Practicar lo aprendido hasta el momento
   8. Extra:
   Tratar de mostrar el nombre (name) capitalizado en mayúscula sin crear una nueva señal.
 
-  
+### Codigo fuente de las seccion 04
+https://github.com/DevTalles-corp/angular-bases/tree/fin-seccion-04  
 
+## Sesion 05
+Temas puntuales
+En esta sección veremos:
 
+* RouterLink
+* RouterLink Active
+* Nuevo control flow
+* @for
+* @if
+* ngClass - ngStyle - Alternativas
+* Comunicación entre componentes
+* Inputs / outputs (Como señales)
+* Servicios en Angular
+* Efectos y LocalStorage
+* LinkedSignal
+* HashRouter
+* Despliegues
 
-
-
+### Codigo fuente de las seccion 04
+https://github.com/DevTalles-corp/angular-bases/tree/fin-seccion-05
 
 
 
