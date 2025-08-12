@@ -1,0 +1,39 @@
+<h1>dragonball page!</h1>
+<hr/>
+<section class="row">
+    <div class="col-12 col-sm-6">
+        <h3>Agregar: {{name()}} | Poder: {{ power() }}</h3>
+        <input type="text" class="form-control" placeholder="Nombre"
+        [value]="name()"
+        #txtName
+        (keyup) = "name.set(txtName.value)" 
+        >
+        <input type="number" class="form-control mt-2" placeholder="Poder"
+        [value]="power()"
+        #txtPower
+        (input) = "power.set(+txtPower.value)" 
+        >
+        <button (click)="addCharacter()" class="mt-2 btn btn-primary" >Agregar personaje</button>
+    </div>
+
+    <div class="col-12 col-sm-6">
+        <h3>Personajes Dragon ball</h3>
+        <ul>
+            @for (character of characters(); track character.id; let idx = $index ) {
+                @if (character.power>500) {
+                    <li>
+                        <span>{{ idx + 1}} {{character.name}} </span> 
+                        <!--  [ngClass] = "powerClass()" -->
+                            <strong 
+                            [class.text-danger] = "character.power > 9000" 
+                            [ngClass]="{'text-primary': character.power<=8000}"
+                            > 
+                            ({{character.power}}) </strong>
+                    </li>
+                } @else {
+                    <li> Peleador no apto para pelear </li>
+                }
+            }
+        </ul>
+    </div>
+</section>
