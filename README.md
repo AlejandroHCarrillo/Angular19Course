@@ -8,3 +8,4 @@ https://gist.github.com/Klerith/4816679624c1cb528f8e05d902fd7cff
 Hoja de comandos de Angular de FH 
 https://github.com/Klerith/mas-talento/blob/main/angular/angular-cheat-sheet.pdf
 
+
