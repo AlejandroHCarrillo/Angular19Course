@@ -18,29 +18,49 @@ export class GifService {
 private http = inject(HttpClient);
 
 trendingGifs = signal<Gif[]>([]);
-trendingGifLoading = signal(true);
+trendingGifLoading = signal(false);
+private trendingGifPage = signal(0);
+private trendingPageSize = 20;
+
+trendingGifGroup = computed<Gif[][]>(() => {
+  const gifs = this.trendingGifs();
+  const groups =  [];
+  for (let i = 0; i < gifs.length; i += 3) {
+    groups.push(gifs.slice(i, i + 3)); // cortamos en grupos de 3
+  }
+//   console.log({groups});
+  
+  return groups;
+});
 
 searchHistory = signal<Record<string, Gif[]>>(loadFromLocalStorage());
 searchHistoryKeys = computed<string[]>(() => Object.keys(this.searchHistory()));
 
     constructor(){
         this.loadTrendingGifs();
-        console.log('Servicio Creado');
+        // console.log('Servicio Creado');
         
     }
 
     loadTrendingGifs(){
+        if(this.trendingGifLoading()) return; // Bandera para bloquear funcion y no se llame indefinidamente mientras esta trabajando
+        this.trendingGifLoading.set(true);    // Indicamos que estamos cargando
+
         this.http.get<GiphyResponse>(`${ environment.giphyUrl }/gifs/trending`, {
         params: {   api_key: environment.giphyApiKey,
-                    limit: 25,
-                    offset: 0
+                    limit: this.trendingPageSize,
+                    offset: this.trendingGifPage() * this.trendingPageSize // Pagina actual * cantidad de elementos por pagina
                 }
         }).subscribe((resp)=>{
-            console.log({resp});
+            //console.log({resp});
            const gifs = GifMapper.mapGiphyItemsToGifsArray(resp.data );
-           console.log({gifs});           
-           this.trendingGifs.set(gifs);
-           this.trendingGifLoading.set(false);
+        //    console.log({gifs});
+
+           this.trendingGifs.update( currentGifs =>{
+               return [...currentGifs, ...gifs];
+           } );
+           this.trendingGifPage.update( currentPage => currentPage + 1); // Aumentamos la pagina actual    
+           this.trendingGifLoading.set(false);           
            return gifs;
         });
     }
@@ -74,10 +94,3 @@ searchHistoryKeys = computed<string[]>(() => Object.keys(this.searchHistory()));
     localStorage.setItem(GIF_HISTORY_KEY, JSON.stringify(this.searchHistory()) );
   });
 }
-
-        //    this.trendingGifs.set(gifs);
-        //    this.trendingGifLoading.set(false);
-        //    return gifs;
-        // });
-//     }       
-// }

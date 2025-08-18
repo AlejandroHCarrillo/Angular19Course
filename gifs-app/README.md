@@ -1,5 +1,5 @@
 # GifsApp
-## Sesion 06
+## Sesion 06 GifsApp - Diseñando componentes
 * LazyLoad
 * Separación de rutas
 * Rutas hijas
@@ -34,7 +34,7 @@ https://flowbite.com/docs/components/gallery/
 https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-6
 
 
-## Sesion 07
+## Sesion 07 - Aplicacion de Gifs
 * Manejo de rutas dinámicas
 * Manejo de LocalStorage
 * Observables a Señales
@@ -48,8 +48,26 @@ https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-6
 * Crear una cuenta
 
 
-## Codigo fuente de las seccion 06
+## Codigo fuente de las seccion 07
 https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-07
+
+
+## Sesion 08 - Manejo del scroll
+* Diseño masonry
+* Hacer scroll infinito
+* Preservar estado del scroll
+* Técnicas y herramientas para depurar
+
+## Codigo fuente de las seccion 08
+https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-08
+
+
+
+
+
+
+
+
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
 
