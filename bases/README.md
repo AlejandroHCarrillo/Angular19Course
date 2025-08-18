@@ -1,8 +1,6 @@
 # Curso Angular 19 Bases
 
 ## Sesion 04
-En esta sección aprenderemos sobre:
-
 * Señales
 * Estado
 * Propiedades
@@ -19,7 +17,7 @@ Recuerden que cada persona tiene diferentes formas de aprender. Para algunos pue
 ### Gist tarea de señales
 https://gist.github.com/Klerith/b07bfb16b4d6aa27b8ccdbb991d316b2
 
-# Tarea:
+### Tarea:
 Practicar lo aprendido hasta el momento
 
 
@@ -82,8 +80,6 @@ Practicar lo aprendido hasta el momento
 https://github.com/DevTalles-corp/angular-bases/tree/fin-seccion-04  
 
 ## Sesion 05
-Temas puntuales
-En esta sección veremos:
 
 * RouterLink
 * RouterLink Active
@@ -99,11 +95,8 @@ En esta sección veremos:
 * HashRouter
 * Despliegues
 
-### Codigo fuente de las seccion 04
+### Codigo fuente de las seccion 05
 https://github.com/DevTalles-corp/angular-bases/tree/fin-seccion-05
-
-
-
 
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
