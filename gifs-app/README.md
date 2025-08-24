@@ -61,10 +61,17 @@ https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-07
 ## Codigo fuente de las seccion 08
 https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-08
 
+## Sesion 09 - Manejo del scroll
 
+* Rutas hijas
+* Rutas Anidadas
+* Lazy loading de rutas
+* Creación y comunicación entre componentes
+* Tailwind y DaisyUI
+* Archivo de rutas por feature / module
 
-
-
+## Codigo fuente de las seccion 09
+https://github.com/DevTalles-corp/angular-country-app/tree/fin-seccion-09
 
 
 
