@@ -61,7 +61,7 @@ https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-07
 ## Codigo fuente de las seccion 08
 https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-08
 
-## Sesion 09 - Manejo del scroll
+## Sesion 09 - Rutas / rutas hijas, comunicacion entre componentes
 
 * Rutas hijas
 * Rutas Anidadas
@@ -72,6 +72,8 @@ https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-08
 
 ## Codigo fuente de las seccion 09
 https://github.com/DevTalles-corp/angular-country-app/tree/fin-seccion-09
+
+
 
 
 

@@ -29,6 +29,33 @@ https://daisyui.com/components/menu/
 https://github.com/DevTalles-corp/angular-gif-app/tree/fin-seccion-07
 
 
+## Sesion 10 - Funcionalidad Coutry App
+
+* Reutilización de componentes
+* Señales
+* Uso de API de paises
+* Peticiones http
+* Servicios
+* Operadores de RXJS
+* Uso de nueva funcionalidad Resources 
+* rxResources
+
+## API Rest Countries
+https://restcountries.com/
+
+## Documentacion resources
+https://angular.dev/guide/signals/resource
+
+## Ejemplos API Contries endpoint
+https://restcountries.com/v3.1/capital/{capital}
+
+Ejemplo:
+https://restcountries.com/v3.1/capital/tallinn
+
+
+## Codigo fuente de las seccion 10
+https://github.com/DevTalles-corp/angular-country-app/tree/fin-seccion-10
+
 
 
 
