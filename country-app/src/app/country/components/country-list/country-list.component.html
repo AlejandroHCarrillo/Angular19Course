@@ -1,0 +1,54 @@
+<section class="mt-5">
+    <!-- Filtrar por: {{ filtro() }} -->
+    <table class="table table-md mt-2 w-full">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Icono</th>
+                <th>Bandera</th>
+                <th>Nombre</th>
+                <th>Capital</th>
+                <th>Poblacion</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (country of countries(); track country.cca2; let index = $index) {
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ country.flag }}</td>
+            <td><img [src]="country.flagSvg" [alt]="country.name" class="w-10"/></td>
+            <td>{{ country.name }}</td>
+            <td>{{ country.capital }}</td>
+            <td class="text-right"><span class="badge badge-secondary">{{ country.population | number }}</span></td>
+            <td><a [routerLink]="['/country/by', country.cca2]" class="btn btn-ghost btn-outline btn-xs cursor-pointer">M&aacute;s...</a> </td>
+          </tr>
+        }
+        <!--  -->
+        @if (errorMessage()) {
+          <tr>
+            <td colspan="7" class="text-center text-danger">{{ errorMessage() }}</td>
+          </tr>
+        }
+        <!--  -->
+        @if (countries().length === 0 && !isLoading()) {
+          <tr>
+            <td colspan="7" class="text-center text-warning">No se encontraron países</td>
+          </tr>
+        }
+        <!--  -->
+        @if (isLoading()) {
+          <tr>
+            <td colspan="7" class="text-center">
+              <span class="loading loading-spinner loading-lg"></span>
+              Estamos trabajando...
+            </td>
+          </tr>
+        }
+        </tbody>
+    </table>
+</section>
+<p>  Errores {{errorMessage()}} </p>
+<p>  Esta cargando? {{isLoading()}}</p>
+<p>  Los países son: {{ countries() | json }}</p>
+
