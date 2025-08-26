@@ -26,14 +26,14 @@ export class ByCountryPageComponent {
     }, 
   });
 
-  // Version corta del codigo de abajo, solo para la version 19+
-  countryResourceWPromeses = resource({
-    request: () => ({ query: this.query() }),
-    loader: async ({ request }) => {
-      if (!request.query || request.query.trim().length === 0) return [];
+  // // Version corta del codigo de abajo, solo para la version 19+
+  // countryResourceWPromeses = resource({
+  //   request: () => ({ query: this.query() }),
+  //   loader: async ({ request }) => {
+  //     if (!request.query || request.query.trim().length === 0) return [];
 
-      return await firstValueFrom ( this.countryService.searchByCountry(request.query)) 
-    }
-  });
+  //     return await firstValueFrom ( this.countryService.searchByCountry(request.query)) 
+  //   }
+  // });
 
 }
