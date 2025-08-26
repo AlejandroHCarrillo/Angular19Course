@@ -1,12 +1,11 @@
 import { Component, input } from '@angular/core';
-import { JsonPipe, DecimalPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { Country } from '../../interfaces/country.interface';
-import { RouterLink } from '@angular/router';
-import { isEmpty } from 'rxjs';
+import * as router from '@angular/router';
 
 @Component({
   selector: 'country-list',
-  imports: [JsonPipe, DecimalPipe, RouterLink],
+  imports: [DecimalPipe, router.RouterLink],
   templateUrl: './country-list.component.html',
   styles: ``
 })

@@ -1,9 +1,10 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { CountryService } from './../../services/country.service';
-import { Component, inject, resource, signal } from '@angular/core';
+import { Component, inject, linkedSignal, signal } from '@angular/core';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { CountryListComponent } from "../../components/country-list/country-list.component";
 import { rxResource } from '@angular/core/rxjs-interop';
-import { firstValueFrom, of } from 'rxjs';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'by-capital-page',
@@ -13,8 +14,15 @@ import { firstValueFrom, of } from 'rxjs';
 })
 export class ByCapitalPageComponent {
   countryService = inject(CountryService);
-  query = signal('');
- 
+  router = inject(Router);
+  activatedRoute = inject(ActivatedRoute);
+  
+  queryParam = this.activatedRoute.snapshot.queryParamMap.get('query') ?? '';
+
+  // console.log(this.queryParam);
+
+  query = linkedSignal(() => this.queryParam);
+
   // Version corta del codigo de abajo, solo para la version 19+
   // Vesion usando Observables (importarlo de @angular/core/rxjs-interop)
   // es mas corto y no necesita async, await ni firstValueFrom
@@ -22,11 +30,14 @@ export class ByCapitalPageComponent {
   countryResource = rxResource({
     request: () => ({ query: this.query() }),
     loader: ({ request }) => {
+        console.log({query : request.query});
       if (!request.query || request.query.trim().length === 0) return of([]);
+      this.router.navigate(['/country/by-capital'], 
+        { queryParams: { query: request.query } });
       return this.countryService.searchByCapital(request.query); 
     }, 
   });
-  
+}  
   // // vesion usando promesas usa firstValueFrom para obtener la info sin nencesidad de la promesa
   // countryResourceWPromeses = resource({
   //   request: () => ({ query: this.query() }),
@@ -37,7 +48,6 @@ export class ByCapitalPageComponent {
   //   }
   // });
 
-}
 
   // buscar = signal('');
   // placeholder = signal('');

@@ -1,4 +1,9 @@
-<country-search-input (buscar)="query.set($event)"  placeholder="Buscar por pais" [debounceTime]="200"/>
+<country-search-input 
+placeholder="Buscar por pais" 
+[debounceTime]="200"
+(buscar)="query.set($event)"  
+initialValue="{{ query() }}"
+/>
 <country-list [countries]="countryResource.value()??[]"
       [errorMessage]="countryResource.error()"
       [isLoading]="countryResource.isLoading()"
