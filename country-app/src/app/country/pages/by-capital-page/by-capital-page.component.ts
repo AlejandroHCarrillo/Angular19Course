@@ -18,6 +18,7 @@ export class ByCapitalPageComponent {
   // Version corta del codigo de abajo, solo para la version 19+
   // Vesion usando Observables (importarlo de @angular/core/rxjs-interop)
   // es mas corto y no necesita async, await ni firstValueFrom
+  // esto se ejecuta en automatico
   countryResource = rxResource({
     request: () => ({ query: this.query() }),
     loader: ({ request }) => {
@@ -26,15 +27,15 @@ export class ByCapitalPageComponent {
     }, 
   });
   
-  // vesion usando promesas usa firstValueFrom para obtener la info sin nencesidad de la promesa
-  countryResourceWPromeses = resource({
-    request: () => ({ query: this.query() }),
-    loader: async ({ request }) => {
-      if (!request.query || request.query.trim().length === 0) return [];
+  // // vesion usando promesas usa firstValueFrom para obtener la info sin nencesidad de la promesa
+  // countryResourceWPromeses = resource({
+  //   request: () => ({ query: this.query() }),
+  //   loader: async ({ request }) => {
+  //     if (!request.query || request.query.trim().length === 0) return [];
 
-      return await firstValueFrom ( this.countryService.searchByCapital(request.query)) 
-    }
-  });
+  //     return await firstValueFrom ( this.countryService.searchByCapital(request.query)) 
+  //   }
+  // });
 
 }
 

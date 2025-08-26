@@ -2,7 +2,7 @@ import { RESTCountry } from './../interfaces/rest-country.interface';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { CountryMapper } from '../mappers/country.mapper';
-import { catchError, delay, map, Observable, throwError } from 'rxjs';
+import { catchError, delay, map, Observable, of, throwError } from 'rxjs';
 import type { Country } from '../interfaces/country.interface';
 
 const API_URL = 'https://restcountries.com/v3.1'; 
@@ -15,7 +15,11 @@ private http =  inject(HttpClient);
 
 searchByCapital(query: string): Observable<Country[]> {
   query = query.trim().toLowerCase();
+  console.log(`Se recibio el emit en el servicio: ${query}`);
+
+  return of([]);
   const fullURL = `${API_URL}/capital/${query}`;
+
   // console.log({ fullURL });
   return this.http
   .get<RESTCountry[]>(fullURL)

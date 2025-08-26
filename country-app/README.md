@@ -57,8 +57,15 @@ https://restcountries.com/v3.1/capital/tallinn
 https://github.com/DevTalles-corp/angular-country-app/tree/fin-seccion-10
 
 
+Para poder acceder al proyecto desde otro dispositivo en la red usar
+```
+ng serve --host 0.0.0.0
+```
+
+## Sesion 11 - Funcionalidad Avanzada
 
 
+## Codigo fuente de las seccion 10
 
 
 
