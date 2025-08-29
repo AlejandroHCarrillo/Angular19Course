@@ -1,0 +1,115 @@
+<section class="mx-5 mb-5">
+    <h1 class="text-2xl font-bold">Uncommon Pipes</h1>
+    <h3 class="text-xl font-thin">Usando pipes poco comunes</h3>
+</section>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    <app-card title="i18nSelectPipe">
+        <p>{{ client().gender | i18nSelect:EstimadoMap }}:</p>
+        <p>{{ client().name }}
+            es un gusto {{ client().gender | i18nSelect:invitationMap }} a nuestra conferencia
+        </p>
+        <button class="btn btn-primary btn-lm mt-2" (click)="changeClient()">Click</button>
+    </app-card>
+
+    <app-card title="i18nPluralPipe">
+        <p>Actualmente {{ clients().length | i18nPlural:clientsMap() }} 
+         a nuestra conferencia</p>
+        <div class="row text-center">
+            <button class="btn btn-secondary btn-sm mt-2 mx-1 w-20" 
+            [disabled]="clients().length === 0"
+            (click)="removeClient()">Eliminar</button>
+            <button class="btn btn-primary btn-sm mt-2 mx-1 w-20" (click)="addClient()">Agregar</button>
+            <button class="btn btn-neutral btn-outline btn-sm mt-2 mx-1 w-20" (click)="clients.set([])">Clear</button>
+            <button class="btn btn-accent btn-outline btn-sm mt-2 mx-1 w-20" (click)="clients.set(clientsArray)">Reset</button>
+        </div>
+    </app-card>
+
+    <app-card title="SlicePipe part 1/2">
+        <b>Original:</b>
+        <p class="text-primary">{{ clients().join(', ') }}</p>
+
+        <b>Slice:0:2</b>
+        <p class="text-primary">{{ clients() | slice:0:2 }}</p>
+
+        <b>Slice:1:2</b>
+        <p class="text-primary">{{ clients() | slice:1:2 }}</p>
+    </app-card>
+    
+    <app-card title="SlicePipe part 2/2">
+        <b>Slice:1:3</b>
+        <p class="text-primary">{{ clients() | slice:1:3 }}</p>
+
+        <b>Slice:3:4</b>
+        <p class="text-primary">{{ clients() | slice:3:4 }}</p>
+
+        <b>Slice:0:3</b>
+        <p class="text-primary">{{ clients() | slice:0:3 }}</p>
+    </app-card>
+    
+    <app-card title="JSONPipe">
+        <pre class="text-primary">{{ clients() | json }}</pre>
+        <pre class="text-primary">{{ client() | json }}</pre>
+        <p class="text-primary">{{ clients().join(', ') | json | uppercase }}</p>
+    </app-card>
+
+    <app-card title="KeyValuePipe">
+        <ul>
+            @for (item of profile | keyvalue; track $index) {
+                <li>
+                    <strong>{{ item.key | titlecase }}: </strong>
+                     <span class="text-neutral">{{ item.value }}</span>
+                </li>
+            }
+        </ul>
+
+        <pre class="text-primary text-">{{ profile | keyvalue | json }}</pre>
+    </app-card>
+
+    <app-card title="KeyValuePipe">
+        <p>{{ promiseValue | async }}</p>
+        @if (promiseValue | async; as value) {
+            <p class="text-secondary"> Promise resolved with value: {{ value }}</p>
+        }@else {
+            <p class="text-secondary"> Promise not resolved yet...</p>
+        }
+        
+        <h3 class="card-title" >Observable pipe: 
+            <strong>{{ myObservable | async }}</strong>
+        </h3>
+        @if (myObservable | async; as value) {
+            <p class="text-secondary"> Observable resolved with value: {{ value }}</p>
+        }@else {
+            <p class="text-secondary"> Observable not resolved yet...</p>
+        }
+
+        <p class="text-xs">El async pipe se utiliza para trabajar con Observables en Angular, 
+            permitiendo que los valores se actualicen automáticamente en la vista cuando cambian.
+            <strong>Además, simplifica la suscripción y cancelación de suscripciones.</strong>
+        </p>
+    </app-card>
+</div>
+
+<button class="btn btn-neutral">Neutral</button>
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-accent">Accent</button>
+<button class="btn btn-info">Info</button>
+<button class="btn btn-success">Success</button>
+<button class="btn btn-warning">Warning</button>
+<button class="btn btn-error">Error</button>
+<button class="btn btn-ghost">Ghost</button>
+<button class="btn btn-link">Link</button>
+<button class="btn btn-active">Active</button>
+<br/>
+<button class="btn btn-neutral btn-outline">Neutral</button>
+<button class="btn btn-primary btn-outline">Primary</button>
+<button class="btn btn-secondary btn-outline">Secondary</button>
+<button class="btn btn-accent btn-outline">Accent</button>
+<button class="btn btn-info btn-outline">Info</button>
+<button class="btn btn-success btn-outline">Success</button>
+<button class="btn btn-warning btn-outline">Warning</button>
+<button class="btn btn-error btn-outline">Error</button>
+<button class="btn btn-ghost btn-outline">Ghost</button>
+<button class="btn btn-link btn-outline">Link</button>
+<button class="btn btn-active btn-outline">Active</button>
