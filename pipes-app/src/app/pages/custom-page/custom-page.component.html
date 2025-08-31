@@ -1,1 +1,88 @@
-<p>custom-page works!</p>
+<section class="mx-5">
+    <h1 class="text-2xl font-bold">Pipes personalizados</h1>
+    <h3 class="text-xl font-thin">Aprende a usar <strong class="text-2xl">pipes no incluidos</strong> en Angular</h3>
+</section>
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">toggleCase : true</div>    
+    <div class="stat-value">{{ stringToToggle | toggleCase : true }}</div>
+
+    <div class="stat-title">toggleCase : false</div>    
+    <div class="stat-value">{{ stringToToggle | toggleCase : false }}</div>
+
+    <div class="stat-title">toggleCase : no argument</div>    
+    <div class="stat-value">{{ stringToToggle  }}</div>
+
+    <div class="stat-title">toggleCase dinamico</div>    
+    <div class="stat-value">{{ stringToToggle | toggleCase : isUpperCase() }}</div>
+
+    <div class="stat-desc">{{ stringToToggle }}
+        
+    </div>
+    <button class="btn btn-secondary" (click)="toggleCase()">{{ isUpperCase() ? 'Lowercase' : 'Uppercase' }}</button>
+</div>
+
+<div class="divider my-2"></div>
+
+<section class="my-2">
+    <h3 class="text-xl font-thin"> Ordenar por: {{ sortBy() | titlecase }}</h3>
+    <h1> Filtrar por: {{ querySearch() }}</h1>
+
+    <div class="flex gap-2 justify-end w-full mt-2">
+        <input type="text" class="input input-bordered w-full max-w-xs" placeholder="Buscar..."  
+            (input)="querySearch.set(txtSearch.value); filterBy.set('name')"
+            #txtSearch
+            />
+        <div class="flex flex-1"></div>
+
+        <button class="btn btn-primary" (click)="sortBy.set('name')">
+            <svg *ngIf="sortBy() === 'name'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M13 1.75a.75.75 0 0 0-1.5 0v10.69l-.72-.72a.75.75 0 1 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l2-2a.75.75 0 1 0-1.06-1.06l-.72.72zM2.75 2.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5zm2 3a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5zM6 9.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5A.75.75 0 0 1 6 9.25"/></svg>
+            <svg *ngIf="querySearch().length > 0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14 20.5h-4a.76.76 0 0 1-.75-.75V12L3.9 4.69a.73.73 0 0 1-.07-.78a.76.76 0 0 1 .67-.41h15a.76.76 0 0 1 .67.41a.73.73 0 0 1-.07.78L14.75 12v7.75a.76.76 0 0 1-.75.75M10.75 19h2.5v-7.25a.7.7 0 0 1 .15-.44L18 5H6l4.62 6.31a.7.7 0 0 1 .15.44Z"/></svg>
+            <!-- <svg *ngIf="sortBy() === 'name'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M13 1.75a.75.75 0 0 0-1.5 0v10.69l-.72-.72a.75.75 0 1 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l2-2a.75.75 0 1 0-1.06-1.06l-.72.72zM2.75 2.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5zm2 3a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5zM6 9.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5A.75.75 0 0 1 6 9.25"/></svg> -->
+            Por Nombre</button>
+        <button class="btn btn-secondary" (click)="sortBy.set('canFly')">
+            <svg *ngIf="sortBy() === 'canFly'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M13 1.75a.75.75 0 0 0-1.5 0v10.69l-.72-.72a.75.75 0 1 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l2-2a.75.75 0 1 0-1.06-1.06l-.72.72zM2.75 2.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5zm2 3a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5zM6 9.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5A.75.75 0 0 1 6 9.25"/></svg>
+            Puede volar</button>
+        <button class="btn btn-accent" (click)="sortBy.set('color')">
+            <svg *ngIf="sortBy() === 'color'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M13 1.75a.75.75 0 0 0-1.5 0v10.69l-.72-.72a.75.75 0 1 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l2-2a.75.75 0 1 0-1.06-1.06l-.72.72zM2.75 2.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5zm2 3a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5zM6 9.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5A.75.75 0 0 1 6 9.25"/></svg>
+            Por color</button>
+        <button class="btn btn-info" (click)="sortBy.set('creator')">
+            <svg *ngIf="sortBy() === 'creator'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M13 1.75a.75.75 0 0 0-1.5 0v10.69l-.72-.72a.75.75 0 1 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l2-2a.75.75 0 1 0-1.06-1.06l-.72.72zM2.75 2.5a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5zm2 3a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5zM6 9.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5A.75.75 0 0 1 6 9.25"/></svg>
+            Por creador</button>
+    </div>
+
+    <table class="table table-xs w-full">
+        <thead>
+        <tr>
+            <th></th>
+            <th class=" text-center">Nombre</th>
+            <th class=" text-center">¿Vuela?</th>
+            <th class=" text-center">Color</th>
+            <th class=" text-center">Creador</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (hero of heroes() | heroFilterBy : filterBy() : querySearch() | heroSortBy : sortBy() ; track hero.id; let i = $index) {
+            <tr>
+              <td>{{ hero.id }}</td>
+              <td><span class="text-2xl"
+                [style.color]="hero.color | heroTextColor"
+                >{{ hero.name }}</span>
+              </td>
+              <td class="text-xs w-44 text-bold"
+              [class.text-primary]="hero.canFly"
+              [class.text-secondary]="!hero.canFly"
+              ><strong>{{ hero.canFly | siNo }}</strong></td>
+              <td> <span class="text-white text-xl w-20 text-center px-2 rounded-lg"
+                [style.backgroundColor]="hero.color | heroColor"
+                [style.color]="(hero.color | heroColor) !== 'yellow' ? 'white' : 'black'"
+                >{{ hero.color | heroColor | uppercase }}</span></td>
+                <td ><span 
+                    [class.text-blue-500]="hero.creator === 0"
+                    [class.text-red-500]="hero.creator === 1"
+                    ><strong>{{ hero.creator | heroCreator }}</strong></span></td>
+            </tr>
+        }
+    </tbody>
+</table>
+</section>
