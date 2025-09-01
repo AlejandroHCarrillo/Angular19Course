@@ -9,3 +9,16 @@ Hoja de comandos de Angular de FH
 https://github.com/Klerith/mas-talento/blob/main/angular/angular-cheat-sheet.pdf
 
 
+Public Demos
+
+1. Bases
+https://ng-basics-iexquisite-empanada-169c00.netlify.app/#/
+
+2. Gifs app
+https://gifs-sage-profiterole-8a55b8.netlify.app/dashboard/trending
+
+3. Country app
+https://country-app-dreamy-wisp-c01723.netlify.app/
+
+4. Pipes app
+https://pipes-demo-extraordinary-babka-5add33.netlify.app/basic
