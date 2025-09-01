@@ -7,7 +7,7 @@
     <app-card title="i18nSelectPipe">
         <p>{{ client().gender | i18nSelect:EstimadoMap }}:</p>
         <p>{{ client().name }}
-            es un gusto {{ client().gender | i18nSelect:invitationMap }} a nuestra conferencia
+            es un gusto <span class="text-secondary"><strong>{{ client().gender | i18nSelect:invitationMap }}</strong></span> a nuestra conferencia
         </p>
         <button class="btn btn-primary btn-lm mt-2" (click)="changeClient()">Click</button>
     </app-card>

@@ -65,19 +65,26 @@
         @for (hero of heroes() | heroFilterBy : filterBy() : querySearch() | heroSortBy : sortBy() ; track hero.id; let i = $index) {
             <tr>
               <td>{{ hero.id }}</td>
-              <td><span class="text-2xl"
+              <td><span class="text-2xl cursor-pointer "
                 [style.color]="hero.color | heroTextColor"
                 >{{ hero.name }}</span>
               </td>
-              <td class="text-xs w-44 text-bold"
-              [class.text-primary]="hero.canFly"
-              [class.text-secondary]="!hero.canFly"
-              ><strong>{{ hero.canFly | siNo }}</strong></td>
-              <td> <span class="text-white text-xl w-20 text-center px-2 rounded-lg"
+              <td>
+              <span class="cursor-pointer text-xs w-44 text-bold"
+                    [class.text-primary]="hero.canFly"
+                    [class.text-secondary]="!hero.canFly"
+                    (click)="querySearch.set(hero.canFly? 'true' : 'false'); filterBy.set('canFly')"
+              >
+                  <strong>{{ hero.canFly | siNo }}</strong>
+              </span>
+            </td>
+              <td> <span class="cursor-pointer text-white text-xl w-20 text-center px-2 rounded-lg"
+                (click)="querySearch.set(hero.color.toString()); filterBy.set('color')"
                 [style.backgroundColor]="hero.color | heroColor"
                 [style.color]="(hero.color | heroColor) !== 'yellow' ? 'white' : 'black'"
                 >{{ hero.color | heroColor | uppercase }}</span></td>
-                <td ><span 
+                <td ><span class="cursor-pointer"
+                    (click)="querySearch.set(hero.creator.toString()); filterBy.set('creator')"
                     [class.text-blue-500]="hero.creator === 0"
                     [class.text-red-500]="hero.creator === 1"
                     ><strong>{{ hero.creator | heroCreator }}</strong></span></td>

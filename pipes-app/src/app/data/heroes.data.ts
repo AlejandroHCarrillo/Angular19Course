@@ -198,5 +198,12 @@ export const heroes: Hero[] = [
     canFly: false,
     color: Color.red,
     creator: Creator.Marvel,
+  },
+  {
+    id: 29,
+    name: 'Black Adam',
+    canFly: true,
+    color: Color.black,
+    creator: Creator.DC,
   }
 ];
