@@ -1,5 +1,16 @@
 # Seccion 14: ReactiveFormsApp
 
+* Reactive Forms Module en Standalone components
+* Form Builder
+* FormControls
+* FormArrays
+* Controles dinámicos
+* Formularios reactivos
+* Campos reactivos fuera de formularios
+* NgSubmit
+* Clases utilitarias
+* Validaciones básicas pre-fabricadas
+
 ## Gist recursos para construir formularios reactivos
 
 https://gist.github.com/Klerith/5729dcfb170595f84d1b564a182ffbc2
@@ -9,9 +20,27 @@ https://gist.github.com/Klerith/5729dcfb170595f84d1b564a182ffbc2
 https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
 
+## Codigo fuente de las seccion 14
+https://github.com/DevTalles-corp/angular-reactive-forms/tree/fin-seccion-14
 
 
 
+# Seccion 15: ReactiveFormsApp AVANZADO
+
+* Validaciones personalizadas
+* Síncronas
+* Asíncronas
+* Validaciones con
+* Patrones
+* Expresiones regulares
+* Palabras en concreto
+* Selectores
+* Checkboxes
+* Radios
+* Peticiones HTTP en secuencai
+* Suscripciones de cambios de los campos del formulario
+* Limpieza de suscripciones
+* Operadores de RXJS útiles
 
 
 

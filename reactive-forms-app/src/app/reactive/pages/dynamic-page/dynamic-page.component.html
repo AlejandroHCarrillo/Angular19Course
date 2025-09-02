@@ -31,6 +31,7 @@
                        placeholder="Agregar favorito"
                         [formControl] = "newFavorite"
                         (keydown.enter)="onAddToFavorites()"
+                        (keydown.enter)="$event.preventDefault()"
                 >
                 <button class="btn "
                         [class.btn-primary] = "newFavorite.valid"
