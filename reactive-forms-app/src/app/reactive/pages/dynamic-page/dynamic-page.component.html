@@ -1,17 +1,23 @@
 <h2>Reactivos: <small> Dinámicos </small></h2>
 <hr>
 
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
 
     <!-- Nombre -->
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-9">
             <input class="form-control"
-                   placeholder="Nombre de la persona">
-            <span class="form-text text-danger">
-                   error message
-            </span>
+                   placeholder="Nombre de la persona"
+                   formControlName = "name"
+                   >
+                    @if (!formUtils.isValidField(myForm, 'name')) {
+                        @if (formUtils.getFieldError(myForm, 'name')) {
+                            <span class="form-text text-danger">
+                                {{ formUtils.getFieldError(myForm, 'name') }}
+                            </span>
+                        }
+                    }
         </div>
     </div>
 
@@ -22,38 +28,59 @@
 
             <div class="input-group">
                 <input class="form-control"
-                       placeholder="Agregar favorito">
-
-
-                <button class="btn btn-outline-primary"
-                        type="button">
-                    Agregar favorito
+                       placeholder="Agregar favorito"
+                        [formControl] = "newFavorite"
+                        (keydown.enter)="onAddToFavorites()"
+                >
+                <button class="btn "
+                        [class.btn-primary] = "newFavorite.valid"
+                        [class.btn-outline-primary] = "!newFavorite.valid"
+                        [disabled] = "!newFavorite.valid"
+                        type="button"
+                        (click)="onAddToFavorites()"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"/></svg>
                 </button>
             </div>
         </div>
+        <!-- new Favorite is valid: {{ newFavorite.valid|  json}} -->
     </div>
 
 
     <!-- Lista de Juegos Favoritos -->
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Favoritos</label>
-        <div class="col-sm-9">
 
+        <div class="col-sm-9" formArrayName="favoriteGames">
+            @for (favoriteGame of favoriteGames.controls; track $index; let i = $index) {
             <div class="mb-1">
-
                 <div class="input-group">
-                    <input class="form-control">
-
+                    <input class="form-control" 
+                        [formControlName] = i
+                    >
                     <button class="btn btn-outline-danger"
-                            type="button">
-                      Eliminar
+                            type="button"
+                            (click)="onDeleteFavorite(i)"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.616 20q-.672 0-1.144-.472T6 18.385V6H5V5h4v-.77h6V5h4v1h-1v12.385q0 .69-.462 1.153T16.384 20zM17 6H7v12.385q0 .269.173.442t.443.173h8.769q.23 0 .423-.192t.192-.424zM9.808 17h1V8h-1zm3.384 0h1V8h-1zM7 6v13z"/></svg>
                   </button>
                 </div>
-                <span class="form-text text-danger">
-                   Este campo es requerido
-                </span>
+                @if (!formUtils.isValidFieldInArray(favoriteGames, i)) {
+                    <span class="form-text text-danger">
+                        {{ formUtils.getFieldErrorInArray(favoriteGames, i) }}
+                    </span>
+                }
 
             </div>
+
+            }
+        <!-- <span class="form-text text-danger">Error general</span> -->
+            @if (!formUtils.isValidField(myForm, 'favoriteGames')) {
+                    <span class="form-text text-danger">
+                        Debe elegir 3 juegos favoritos
+                    </span>
+            }
+
 
         </div>
     </div>
@@ -77,13 +104,13 @@
 
 
 <span>Valid</span>
-<pre>{{ 'object' | json }}</pre>
+<pre>{{ myForm.valid | json }}</pre>
 <br>
 
 <span>Value</span>
-<pre>{{ 'object' | json }}</pre>
+<pre>{{ myForm.value | json }}</pre>
 <br>
 
-<span>Agregar Juego</span>
-<pre>{{ 'object' | json }}</pre>
-<pre>{{ 'object' | json }}</pre>
+<span>Agregar Juegos</span>
+<pre>{{ myForm.controls['favoriteGames'].errors | json }}</pre>
+<pre>{{ myForm.controls['favoriteGames'].valid | json }}</pre>

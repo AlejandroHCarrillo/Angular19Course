@@ -66,8 +66,6 @@
                            placeholder="Existencias del producto"
                            formControlName="inStorage">
                            @if (!formUtils.isValidField(myForm, 'inStorage')) {
-                                <!--  -Debido a que el nombre es un campo requerido, se debe proporcionar un valor. - -->
-                                <!-- El nombre es obligatorio y debe de tener al menos 3 letras -->
                                 @if (formUtils.getFieldError(myForm, 'inStorage')) {
                                     <span class="form-text text-danger">
                                          {{ formUtils.getFieldError(myForm, 'inStorage') }}
