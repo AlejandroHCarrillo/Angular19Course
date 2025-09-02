@@ -1,10 +1,18 @@
 <h2>Reactivos: Básicos</h2>
 <hr>
 
+<span>
+    errors: 
+    <pre>Name: {{ myForm.controls['name'].errors | json }}</pre>
+    <pre>Price: {{ myForm.controls['price'].errors | json }}</pre>
+    <pre>In Storage: {{ myForm.controls['inStorage'].errors | json }}</pre>
+</span>
+
+
 <div class="row">
     <div class="col">
 
-        <form autocomplete="off" [formGroup]="myForm">
+        <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
 
             <!-- Campo de producto -->
             <div class="mb-3 row">
@@ -16,11 +24,15 @@
                            placeholder="Nombre del producto"
                            formControlName="name"
                            >
-
-                    <span class="form-text text-danger">
-                        <!-- Debe de ser de 3 letras -->
-                        error message
-                    </span>
+                           @if (!formUtils.isValidField(myForm, 'name')) {
+                                <!--  -Debido a que el nombre es un campo requerido, se debe proporcionar un valor. - -->
+                                <!-- El nombre es obligatorio y debe de tener al menos 3 letras -->
+                                @if (formUtils.getFieldError(myForm, 'name')) {
+                                    <span class="form-text text-danger">
+                                        {{ formUtils.getFieldError(myForm, 'name') }}
+                                    </span>
+                                }
+                            }
                 </div>
             </div>
 
@@ -33,9 +45,15 @@
                            placeholder="Precio del producto"
                            formControlName="price"
                            >
-                    <span class="form-text text-danger">
-                        El precio debe de ser 0 o mayor
-                    </span>
+                           @if (!formUtils.isValidField(myForm, 'price')) {
+                                <!--  -Debido a que el nombre es un campo requerido, se debe proporcionar un valor. - -->
+                                <!-- El nombre es obligatorio y debe de tener al menos 3 letras -->
+                                @if (formUtils.getFieldError(myForm, 'price')) {
+                                    <span class="form-text text-danger">
+                                         {{ formUtils.getFieldError(myForm, 'price') }}
+                                    </span>
+                                }
+                            }
                 </div>
             </div>
 
@@ -46,19 +64,27 @@
                     <input type="number"
                            class="form-control"
                            placeholder="Existencias del producto"
-                           formControlName="storage">
+                           formControlName="inStorage">
+                           @if (!formUtils.isValidField(myForm, 'inStorage')) {
+                                <!--  -Debido a que el nombre es un campo requerido, se debe proporcionar un valor. - -->
+                                <!-- El nombre es obligatorio y debe de tener al menos 3 letras -->
+                                @if (formUtils.getFieldError(myForm, 'inStorage')) {
+                                    <span class="form-text text-danger">
+                                         {{ formUtils.getFieldError(myForm, 'inStorage') }}
+                                    </span>
+                                }
+                            }
 
-                    <span class="form-text text-danger">
-                         Las existencias deben de ser 0 o mayor
-                    </span>
                 </div>
             </div>
 
 
             <div class="row">
                 <div class="col">
+                    <!-- [disabled]="myForm.invalid" -->
                     <button type="submit"
-                            class="btn btn-primary float-end">
+                            class="btn btn-primary float-end"
+                            >
                         Guardar
                     </button>
                 </div>
@@ -90,9 +116,9 @@
         <pre>{{ myForm.value | json }}</pre>
 
         <span>Precio</span>
-        <pre>{{ myForm.controls.price.value | json }}</pre>
+        <pre>{{ myForm.controls['price'].value | json }}</pre>
 
         <span>Producto</span>
-        <pre>{{ myForm.controls.name.value | json }}</pre>
+        <pre>{{ myForm.controls['name'].value | json }}</pre>
     </div>
 </div>
