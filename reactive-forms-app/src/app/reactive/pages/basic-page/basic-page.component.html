@@ -1,0 +1,111 @@
+<h2>Reactivos: Básicos</h2>
+<hr>
+
+<span>
+    errors: 
+    <pre>Name: {{ myForm.controls['name'].errors | json }}</pre>
+    <pre>Price: {{ myForm.controls['price'].errors | json }}</pre>
+    <pre>In Storage: {{ myForm.controls['inStorage'].errors | json }}</pre>
+</span>
+
+
+<div class="row">
+    <div class="col">
+
+        <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
+
+            <!-- Campo de producto -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Producto</label>
+                <div class="col-sm-9">
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Nombre del producto"
+                           formControlName="name"
+                           >
+                    <!-- Con este validador verificamos los errores del campo -->
+                    <show-form-error-template
+                            [isValid]="formUtils.isValidField(myForm, 'name')"
+                            [errorMessage]="formUtils.getFieldError(myForm, 'name')"
+                    />
+                </div>
+            </div>
+
+            <!-- Campo de producto -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Precio</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                           class="form-control"
+                           placeholder="Precio del producto"
+                           formControlName="price"
+                           >
+                    <!-- Con este validador verificamos los errores del campo -->
+                    <show-form-error-template
+                            [isValid]="formUtils.isValidField(myForm, 'price')"
+                            [errorMessage]="formUtils.getFieldError(myForm, 'price')"
+                    />
+                </div>
+            </div>
+
+            <!-- Campo de existencias -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Existencias</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                           class="form-control"
+                           placeholder="Existencias del producto"
+                           formControlName="inStorage">
+                    <!-- Con este validador verificamos los errores del campo -->
+                    <show-form-error-template
+                            [isValid]="formUtils.isValidField(myForm, 'inStorage')"
+                            [errorMessage]="formUtils.getFieldError(myForm, 'inStorage')"
+                    />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <!-- [disabled]="myForm.invalid" -->
+                    <button type="submit"
+                            class="btn btn-primary float-end"
+                            >
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+
+
+        </form>
+
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col">
+
+        <span>Valid</span>
+        <pre>{{ myForm.valid| json }}</pre>
+
+        <span>Pristine</span>
+        <pre>{{ myForm.pristine| json }}</pre>
+
+        <span>Touched</span>
+        <pre>{{ myForm.touched| json }}</pre>
+
+        <span>Value</span>
+        <pre>{{ myForm.value | json }}</pre>
+
+        <span>Precio</span>
+        <pre>{{ myForm.controls['price'].value | json }}</pre>
+
+        <span>Producto</span>
+        <pre>{{ myForm.controls['name'].value | json }}</pre>
+    </div>
+</div>
