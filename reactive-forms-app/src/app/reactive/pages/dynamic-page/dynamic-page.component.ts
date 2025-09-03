@@ -1,11 +1,12 @@
 import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { FormUtils } from '../../../utils/form-utils';
+import { ShowFormErrorTemplateComponent } from "../../../shared/components/show-form-error-template/show-form-error-template.component";
 
 @Component({
   selector: 'dynamic-page',
-  imports: [JsonPipe, ReactiveFormsModule],
+  imports: [JsonPipe, ReactiveFormsModule, ShowFormErrorTemplateComponent],
   templateUrl: './dynamic-page.component.html',
 })
 export class DynamicPageComponent {
@@ -21,22 +22,18 @@ export class DynamicPageComponent {
     ], Validators.minLength(3))
   });
 
-  newFavorite = new FormControl('', [Validators.required, Validators.minLength(2)]); // control independiente para agregar un control al formulario pricipal
+  newFavorite = new FormControl('', [Validators.minLength(5)]); // control independiente para agregar un control al formulario pricipal
 
   get favoriteGames(){
     return this.myForm.get('favoriteGames') as FormArray;
   }
 
   onAddToFavorites(){
-    // console.log("agregando a favoritos");
-    // console.log('is valid?' , !this.newFavorite.invalid);
-    // console.log('errors?' , this.newFavorite.errors );
-    
     if(this.newFavorite.invalid) return;
 
     const newGame = this.newFavorite.value;
     
-    console.log({newGame});
+    // console.log({newGame});
     
     // agregamos el nuevo juego a arreglo de juegos favoritos
     this.favoriteGames.push(this.fb.control(newGame, [Validators.required, Validators.minLength(2) ] ) );
@@ -67,9 +64,11 @@ export class DynamicPageComponent {
     console.log('Formulario enviado', this.myForm.value);
     // console.log(fg.controls.length);
 
-    this.myForm.reset({ name: '', price: 0, inStorage: 0 });
+    this.myForm.reset();
     this.myForm.controls['favoriteGames'].reset();
 
     this.favoriteGames.clear();
   }
+
+
  }

@@ -2,10 +2,11 @@ import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormUtils } from '../../../utils/form-utils';
+import { ShowFormErrorTemplateComponent } from "../../../shared/components/show-form-error-template/show-form-error-template.component";
 
 @Component({
   selector: 'basic-page',
-  imports: [JsonPipe, ReactiveFormsModule],
+  imports: [JsonPipe, ReactiveFormsModule, ShowFormErrorTemplateComponent],
   templateUrl: './basic-page.component.html',
 })
 export class BasicPageComponent {

@@ -24,15 +24,11 @@
                            placeholder="Nombre del producto"
                            formControlName="name"
                            >
-                           @if (!formUtils.isValidField(myForm, 'name')) {
-                                <!--  -Debido a que el nombre es un campo requerido, se debe proporcionar un valor. - -->
-                                <!-- El nombre es obligatorio y debe de tener al menos 3 letras -->
-                                @if (formUtils.getFieldError(myForm, 'name')) {
-                                    <span class="form-text text-danger">
-                                        {{ formUtils.getFieldError(myForm, 'name') }}
-                                    </span>
-                                }
-                            }
+                    <!-- Con este validador verificamos los errores del campo -->
+                    <show-form-error-template
+                            [isValid]="formUtils.isValidField(myForm, 'name')"
+                            [errorMessage]="formUtils.getFieldError(myForm, 'name')"
+                    />
                 </div>
             </div>
 
@@ -45,15 +41,11 @@
                            placeholder="Precio del producto"
                            formControlName="price"
                            >
-                           @if (!formUtils.isValidField(myForm, 'price')) {
-                                <!--  -Debido a que el nombre es un campo requerido, se debe proporcionar un valor. - -->
-                                <!-- El nombre es obligatorio y debe de tener al menos 3 letras -->
-                                @if (formUtils.getFieldError(myForm, 'price')) {
-                                    <span class="form-text text-danger">
-                                         {{ formUtils.getFieldError(myForm, 'price') }}
-                                    </span>
-                                }
-                            }
+                    <!-- Con este validador verificamos los errores del campo -->
+                    <show-form-error-template
+                            [isValid]="formUtils.isValidField(myForm, 'price')"
+                            [errorMessage]="formUtils.getFieldError(myForm, 'price')"
+                    />
                 </div>
             </div>
 
@@ -65,14 +57,11 @@
                            class="form-control"
                            placeholder="Existencias del producto"
                            formControlName="inStorage">
-                           @if (!formUtils.isValidField(myForm, 'inStorage')) {
-                                @if (formUtils.getFieldError(myForm, 'inStorage')) {
-                                    <span class="form-text text-danger">
-                                         {{ formUtils.getFieldError(myForm, 'inStorage') }}
-                                    </span>
-                                }
-                            }
-
+                    <!-- Con este validador verificamos los errores del campo -->
+                    <show-form-error-template
+                            [isValid]="formUtils.isValidField(myForm, 'inStorage')"
+                            [errorMessage]="formUtils.getFieldError(myForm, 'inStorage')"
+                    />
                 </div>
             </div>
 

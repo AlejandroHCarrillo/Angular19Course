@@ -47,10 +47,15 @@ https://github.com/DevTalles-corp/angular-reactive-forms/tree/fin-seccion-14
 
 
 
+## Gist Expresiones regulares
+https://gist.github.com/Klerith/e0cf87e1df88853e98290e12b5b00570
 
 
-
-
+```
+static namePattern = '([a-zA-Z]+) ([a-zA-Z]+)';
+static emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+static notOnlySpacesPattern = '^[a-zA-Z0-9]+$';
+```
 
 
 

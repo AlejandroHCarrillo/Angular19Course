@@ -11,13 +11,11 @@
                    placeholder="Nombre de la persona"
                    formControlName = "name"
                    >
-                    @if (!formUtils.isValidField(myForm, 'name')) {
-                        @if (formUtils.getFieldError(myForm, 'name')) {
-                            <span class="form-text text-danger">
-                                {{ formUtils.getFieldError(myForm, 'name') }}
-                            </span>
-                        }
-                    }
+                    <!-- Con este validador verificamos los errores del campo -->
+                    <show-form-error-template
+                            [isValid]="formUtils.isValidField(myForm, 'name')"
+                            [errorMessage]="formUtils.getFieldError(myForm, 'name')"
+                    />
         </div>
     </div>
 
@@ -41,10 +39,18 @@
                         (click)="onAddToFavorites()"
                         >
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"/></svg>
-                </button>
+                </button>            
             </div>
+            <!-- Mandamos el error directo por que no lo tenemos en las utils 
+                como sacar los errores de un campo externo 
+            -->
+            <show-form-error-template
+                [isValid]="newFavorite.errors===null"
+                [errorMessage]="formUtils.getFiedErrorDescription(newFavorite.errors)"
+            />
         </div>
-        <!-- new Favorite is valid: {{ newFavorite.valid|  json}} -->
+        <!-- new Favorite is valid: {{ newFavorite.valid |  json}}
+        new Favorite errors: {{ newFavorite.errors |  json}} -->
     </div>
 
 
@@ -75,12 +81,17 @@
             </div>
 
             }
+            <!-- Con este validador verificamos los errores del campo -->
+            <show-form-error-template
+                    [isValid]="formUtils.isValidField(myForm, 'favoriteGames')"
+                    errorMessage="Debe elegir al menos 3 juegos favoritos"
+            />
         <!-- <span class="form-text text-danger">Error general</span> -->
-            @if (!formUtils.isValidField(myForm, 'favoriteGames')) {
+            <!-- @if (!formUtils.isValidField(myForm, 'favoriteGames')) {
                     <span class="form-text text-danger">
                         Debe elegir 3 juegos favoritos
                     </span>
-            }
+            } -->
 
 
         </div>
