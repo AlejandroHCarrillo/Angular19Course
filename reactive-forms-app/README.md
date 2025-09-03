@@ -30,9 +30,7 @@ https://github.com/DevTalles-corp/angular-reactive-forms/tree/fin-seccion-14
 * Validaciones personalizadas
 * Síncronas
 * Asíncronas
-* Validaciones con
-* Patrones
-* Expresiones regulares
+* Validaciones con Patrones Expresiones regulares
 * Palabras en concreto
 * Selectores
 * Checkboxes
