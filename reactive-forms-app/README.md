@@ -40,9 +40,8 @@ https://github.com/DevTalles-corp/angular-reactive-forms/tree/fin-seccion-14
 * Limpieza de suscripciones
 * Operadores de RXJS útiles
 
-
-
-
+## Codigo fuente de las seccion 15
+https://github.com/DevTalles-corp/angular-reactive-forms/tree/fin-seccion-15
 
 
 ## Gist Expresiones regulares
@@ -54,6 +53,9 @@ static namePattern = '([a-zA-Z]+) ([a-zA-Z]+)';
 static emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 static notOnlySpacesPattern = '^[a-zA-Z0-9]+$';
 ```
+
+
+
 
 
 
