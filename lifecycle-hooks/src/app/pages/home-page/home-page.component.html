@@ -1,0 +1,10 @@
+<h1>Home-page</h1>
+<hr>
+
+<h3>Propiedad tradicional: {{traditionalProperty}}</h3>
+<h3>Propiedad por señales: {{signalProperty()}}</h3>
+
+<button (click)="traditionalProperty = 'otro'">Cambiar tradicional</button>
+<button (click)="signalProperty.set('new')">Cambiar señal</button>
+
+<app-title [title]="signalProperty()"/>

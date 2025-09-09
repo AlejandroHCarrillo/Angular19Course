@@ -14,6 +14,7 @@
                            class="form-control"
                            placeholder="Nombre del usuario"
                            formControlName = "fullname"
+                            (keydown.enter)="$event.preventDefault()"
                            >
                            <show-form-error-template
                             [isValid]="formUtils.isValidField(myForm, 'fullname')"
@@ -38,6 +39,7 @@
                            class="form-control"
                            placeholder="Email del usuario"
                            formControlName = "email"
+                            (keydown.enter)="$event.preventDefault()"
                            >
                     <!-- <span class="form-text text-danger">
                         mensaje de error del email
@@ -58,14 +60,15 @@
                            class="form-control"
                            placeholder="Nombre código del usuario"
                            formControlName = "username"
+                           (keydown.enter)="$event.preventDefault()"
                            >
                             <show-form-error-template
                             [isValid]="formUtils.isValidField(myForm, 'username')"
                             [errorMessage]="formUtils.getFieldError(myForm, 'username')"
                            ></show-form-error-template>
-                    <span class="form-text text-danger">
+                    <!-- <span class="form-text text-danger">
                          El username no puede ser Strider
-                    </span>
+                    </span> -->
                 </div>
             </div>
 
@@ -77,6 +80,7 @@
                            class="form-control"
                            placeholder="Password de su cuenta"
                            formControlName = "password"
+                           (keydown.enter)="$event.preventDefault()"
                            >
                     <show-form-error-template
                             [isValid]="formUtils.isValidField(myForm, 'password')"
@@ -96,6 +100,7 @@
                            class="form-control"
                            placeholder="Confirmar la contraseña"
                            formControlName = "password2"
+                           (keydown.enter)="$event.preventDefault()"
                            >
                     <!-- Con este validador verificamos los errores del campo -->
                     <show-form-error-template
