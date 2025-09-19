@@ -1,7 +1,7 @@
 import { ApplicationConfig, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import { registerLocaleData } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 import  localEs  from '@angular/common/locales/es-MX';
 import  localFr  from '@angular/common/locales/fr';
 import  localEn  from '@angular/common/locales/en';
@@ -19,6 +19,8 @@ export const appConfig: ApplicationConfig = {
                 // useValue: 'es'
                 deps: [LocalService],
                 useFactory: (localService: LocalService) => localService.getLocale
-              }
+              },
+              // Hash strategy
+              { provide: LocationStrategy, useClass:HashLocationStrategy }
             ]
 };

@@ -2,11 +2,14 @@ import { ApplicationConfig, provideExperimentalZonelessChangeDetection, provideZ
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     // provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes),
     provideExperimentalZonelessChangeDetection(),
+    // Hash strategy
+    { provide: LocationStrategy, useClass:HashLocationStrategy },
   ]
 };

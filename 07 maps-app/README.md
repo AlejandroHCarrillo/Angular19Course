@@ -1,59 +1,82 @@
 # MapsApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+## Mapbox
+https://www.mapbox.com/
 
-## Development server
+Obtener Mapbox Key
 
-To start a local development server, run:
 
-```bash
-ng serve
+## Generar environments en angular
+1. Generamos los environments que son compatibles con Angular
+```
+ng g environments
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+2. Creamos un archivo .env en la raiz del projecto y ponemos la key
+```
+MAPBOX_KEY = XXX.XXXX.XXXX
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. Creamos una copia del .env y la renombramos .env.template, ahi ponemos un recordatorio
+de donde podemos obtener la key y el formato
+```
+# https://console.mapbox.com/account/access-tokens
 
-```bash
-ng generate --help
+MAPBOX_KEY = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-## Building
+4. Agregamos los siguientes archivos al .gitignore 
+* .env
+* environment.ts 
+* environment.development.ts 
 
-To build the project run:
+5. Crear script set-envs.js para genenrar los environments 
 
-```bash
-ng build
+* Primero Instalar dotenv
+```
+npm install -D dotenv
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+* Crear el script
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+* Ejecutar el script
+```
+node ./scripts/set-envs.js
 ```
 
-## Running end-to-end tests
+* Agregar el comando a los scripts del package json
+```
+ "set-envs": "node ./scripts/set-envs.js"
+ ```
 
-For end-to-end (e2e) testing, run:
+ Esto nos permite ejecutar el script desde node usando
 
-```bash
-ng e2e
+```
+npm run set-envs
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Documentacion de Mapbox GL JS
 
-## Additional Resources
+https://docs.mapbox.com/#maps
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Instalacion 
+https://docs.mapbox.com/mapbox-gl-js/guides/install/
+
+```
+npm install --save mapbox-gl
+```
+
+## Hash strategy
+
+1. Ir al app.config.ts y agregar el siguiente codigo
+
+```
+    // HashStrategy
+    {
+    provide: LocationStrategy, 
+    useClass: HashLocationStrategy
+    }
+```
+
+
+
