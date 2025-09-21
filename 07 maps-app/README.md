@@ -78,5 +78,10 @@ npm install --save mapbox-gl
     }
 ```
 
+## Instalar UUID para asignar ids
+Es un paquete muy utilizado
 
+```
+    npm i uuid
+```
 
