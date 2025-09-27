@@ -278,3 +278,12 @@ https://country-app-dreamy-wisp-c01723.netlify.app/
 
 4. Pipes app
 https://pipes-demo-extraordinary-babka-5add33.netlify.app/
+
+5. Reactive forms
+https://reactive-forms-euphonious-bubblegum.netlify.app/#
+
+6. Life Cycle hooks
+https://life-cycle-hooks-golden-druid.netlify.app/#/
+
+7. Maps
+https://ng-maps-mapbox-symphonious.netlify.app/#/fullscreen

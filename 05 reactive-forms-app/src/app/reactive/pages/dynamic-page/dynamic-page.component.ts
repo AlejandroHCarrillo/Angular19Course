@@ -48,6 +48,8 @@ export class DynamicPageComponent {
   }
 
   onSave(): void {
+    console.log('saving', this.myForm.value);
+    
     if (this.myForm.invalid) {
       this.myForm.markAllAsTouched();
       return;

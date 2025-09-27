@@ -85,3 +85,51 @@ Es un paquete muy utilizado
     npm i uuid
 ```
 
+## Gist multiple maps
+https://gist.github.com/Klerith/5cebe289e7457e92aeb5de8d53aebd91
+
+## Deploy 
+
+### Proceso para hacer el deploy
+Al hacer el deplpoy con el **ng build** vamos a obtener 2 warnings y 1 error
+```
+▲ [WARNING] bundle initial exceeded maximum budget. Budget 500.00 kB was not met by 1.44 MB with a total of 1.94 MB.
+
+▲ [WARNING] Module 'mapbox-gl' used by 'src/app/pages/full-screen-map-page/full-screen-map-page.component.ts' is not ESM
+
+X [ERROR] bundle initial exceeded maximum budget. Budget 1.00 MB was not met by 936.80 kB with a total of 1.94 MB.
+```
+
+EL primer warning es debido a que mapbox no esta optimizado y el archivo js es demasiado grande.
+El error se debe a que se excede el estimado máximo del paquete de salida.
+
+Para solucionar estos problemas debemos:
+
+1. Vamos al archivo angular.json dentro de  projects -> maps-app -> architect -> build -> options
+    agregar la siguiente propiedad:
+```
+    "allowedCommonJsDependencies": [
+        "mapbox-gl" 
+    ],
+```
+
+2. En ese mismo archivo buscamos configurations -> production -> budgets y modificamos los valores de maximumWarning y maximumError para el initial budget aumentamos maximumWarning a 1Mb y maximumError a 3MB.
+
+```
+    "configurations": {
+        "production": {
+            "budgets": [
+            {
+                "type": "initial",
+                "maximumWarning": "1MB",
+                "maximumError": "3MB"
+            },
+            {
+                "type": "anyComponentStyle",
+                "maximumWarning": "4kB",
+                "maximumError": "8kB"
+            }
+            ],
+```
+
+3. Volvemos a ejecutar **ng build**
