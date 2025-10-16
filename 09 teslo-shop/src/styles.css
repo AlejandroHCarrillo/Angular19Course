@@ -1,10 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
+/* @import "../public/assets/fonts/Montserrat-Medium.ttf"; */
 @import "tailwindcss";
 @plugin "daisyui"{
-  themes: winter --default, dark --prefersdark, winter, lemonade, autumn;
+  themes: garden --default, dark --prefersdark, winter, lemonade, autumn, garden;
   root: ":root";
   include: ;
   exclude: ;
-  logs: true;  
+  logs: true;
+}
+
+@layer base {
+  /* latin */
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/src/assets/fonts/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Montserrat Alternates';
+    src: url('/src/assets/fonts/MontserratAlternates-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
 }
