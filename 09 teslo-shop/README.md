@@ -21,4 +21,19 @@ En el archivo tsconfig.json agregar las siguientes lineas dentro de compilerOpti
     },
 ```
 
+## Implementar swiper
 
+```
+https://swiperjs.com/
+```
+
+```
+npm install swiper
+```
+
+## Codigo fuente de la seccion 18
+### Backend
+https://github.com/Klerith/nest-teslo-shop/tree/complete-backend-paginated
+
+### Frontend
+https://github.com/DevTalles-corp/angular-tesloshop/tree/fin-seccion-18

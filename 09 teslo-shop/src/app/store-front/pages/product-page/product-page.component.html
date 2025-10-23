@@ -1,1 +1,18 @@
-<p>product-page works!</p>
+@if( productResorurce.isLoading()){
+    <div class="flex justify-center items-center h-screen">
+        <span class="loading loading-spinner loading-lg"></span>
+    </div>
+}
+@if (productResorurce.hasValue()) {
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <product-carrousel [images]="productResorurce.value().images"/>
+        <div>
+            <h2 class="text-2xl font-bold font-monserrat">
+                {{productResorurce.value().title}}            
+            </h2>
+            <div class="divider"></div>
+            <p>{{productResorurce.value().description}}</p>
+        </div>
+    </div>
+}
+

@@ -1,5 +1,7 @@
+import { rxResource } from '@angular/core/rxjs-interop';
 import { ProductCardComponent } from '@/products/components/product-card/product-card.component';
-import { Component } from '@angular/core';
+import { ProductsService } from '@/products/services/products.service';
+import { Component, inject } from '@angular/core';
 // import { ProductCardComponent } from "../../../products/components/product-card/product-card.component";
 
 @Component({
@@ -9,5 +11,17 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class HomePageComponent {
+  productsService = inject(ProductsService);
+
+  productResorurce = rxResource({
+    request: () => ({}),
+    loader: ({request}) => {
+      return this.productsService.getProducts(
+        {
+          limit:9, 
+          gender:''
+        });
+    } 
+  });
 
 }
