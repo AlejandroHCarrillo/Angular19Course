@@ -1,0 +1,17 @@
+Pages: {{ pages() }}
+<br>
+Arregle de paginas: {{ getPagesList() }}
+
+<div class="join flex justify-center items-center mt-4 mb-10">
+  @for (pageNum of getPagesList(); track pageNum) {
+      <button class="join-item btn"
+        [class.btn-primary] = "pageNum === activePage()"
+        [routerLink]="[]"
+        [queryParams]="{ page: pageNum }" 
+        (click)="activePage.set(pageNum)"
+      >{{pageNum}}</button>
+  }
+  @empty {
+    <p>No hay paginas</p>
+  }
+</div>

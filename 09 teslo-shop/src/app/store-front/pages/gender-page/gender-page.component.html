@@ -10,3 +10,7 @@
     }
 </div>
 
+<app-pagination 
+[pages]="productResorurce.value()?.pages || 0" 
+[currentPage]="paginationService.currentPage()"/>
+
